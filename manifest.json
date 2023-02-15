@@ -10,6 +10,9 @@
 
 }
 // example
+
+// https://github.com/GoogleChrome/chrome-extensions-samples/tree/main/functional-samples/tutorial.getting-started
+
 // {
 //   "name": "Getting Started Example",
 //   "description": "Build an Extension!",
