@@ -11,7 +11,7 @@ async function getData(url) {
       cache[day].push({
         "Event Title": event.summary,
         Room: event.location,
-        "Start Time": event.start.dateTime,
+        "Start Time": new Date(event.start.dateTime).getTime(),
       });
     });
   }
