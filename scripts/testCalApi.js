@@ -1,6 +1,7 @@
 let url =
   "http://cohort-calendars.us-west-2.elasticbeanstalk.com/calendar/NYOI/03";
-let cache = { "Feb 15 2023": { "Event Title": 'Welcome Breakfast', "Room": 'Runway', "Start Time": '2023-02-15T23:29:00-05:00' } };
+let cache = { "Apr 10 2023": [{ "Event Title": "testing", "Room": "testing room", "Start Time": new Date().getTime() }] };
+console.log("test");
 async function getData(url) {
   let data = await fetch(url).then((data) => data.json());
 
@@ -17,20 +18,22 @@ async function getData(url) {
   }
 
   console.log(cache);
-
   const checkCurrentTime = () => {
     for (const day in cache) {
       cache[day].forEach((calEvent, i) => {
+
+        // if(cache[Day] === )
         let timeDiffMinutes = Math.floor((calEvent["Start Time"] - new Date().getTime()) / 1000 / 60)
         if (timeDiffMinutes <= 0) cache[day].splice(i, 1);
-        if (timeDiffMinutes < 5) window.alert(`${calEvent["Event Title"]} in ${calEvent["Room"]} in 5 minutes!`);
+        else if (timeDiffMinutes < 5) window.alert(`${calEvent["Event Title"]} in ${calEvent["Room"]} in 5 minutes!`);
         //double check that code continues executing when pop up appears 
         //not confirmed yet :)
       })
     }
   }
 
-  setInterval(checkCurrentTime, 50000);
+  setInterval(checkCurrentTime, 1000);
 
 }
-let data = getData(url);
+getData(url);
+// console.log(cache["Feb 16th 2023"])
